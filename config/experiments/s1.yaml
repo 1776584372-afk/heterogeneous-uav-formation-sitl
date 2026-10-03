@@ -1,0 +1,21 @@
+schema_version: 1
+name: S1_multirotor
+wind_m_s: 0
+altitude: 10.0
+endpoint: hover
+waypoints: [[0.0, 0.0], [80.0, 0.0], [80.0, 80.0], [160.0, 80.0]]
+planner:
+  nominal_radius: 20.0
+  radii: [12.0, 16.0, 20.0, 24.0, 28.0, 36.0, 48.0]
+  nominal_speed: 4.0
+  ds: 1.0
+  trans_len: 8.0
+  bounds: [-20.0, -25.0, 190.0, 110.0]
+  smooth_weight: 0.05
+  lambda_time: 0.0
+# Initial reference-envelope values, not measured vehicle capability claims.
+capability_source: "SITL development envelope; calibrate before formal publication"
+members:
+  - {member_id: 0, platform: multirotor, r_y: -5.0, v_min: 0.0, v_max: 6.0, a_lat_max: 3.0, yaw_rate_max: 0.8, a_t_min: -1.5, a_t_max: 1.5}
+  - {member_id: 1, platform: multirotor, r_y: 0.0, v_min: 0.0, v_max: 6.0, a_lat_max: 3.0, yaw_rate_max: 0.8, a_t_min: -1.5, a_t_max: 1.5}
+  - {member_id: 2, platform: multirotor, r_y: 5.0, v_min: 0.0, v_max: 6.0, a_lat_max: 3.0, yaw_rate_max: 0.8, a_t_min: -1.5, a_t_max: 1.5}

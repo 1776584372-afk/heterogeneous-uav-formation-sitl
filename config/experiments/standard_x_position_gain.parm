@@ -1,0 +1,4 @@
+# Development one-factor follow-up to standard_x_45deg.
+# Reduce horizontal position correction gain; velocity feedforward unchanged.
+# Model, sensor noise, NMPC and actual acceptance limits are unchanged.
+PSC_NE_POS_P 0.5

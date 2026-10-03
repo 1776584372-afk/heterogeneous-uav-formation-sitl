@@ -1,0 +1,6 @@
+# Development combination of the separately screened speedweight/filter settings.
+# AP_TECS.cpp: SPDWEIGHT=0 assigns pitch to height and throttle to speed.
+# SPD_OMEGA changes the onboard airspeed estimator, not evidence processing.
+# Aircraft model, sensor noise, frozen limits, and scoring remain unchanged.
+TECS_SPDWEIGHT 0
+TECS_SPD_OMEGA 0.5

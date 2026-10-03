@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.paper_dependencies/
+build/
+install/
+log/
+runs/
+tmp/
+*.BIN
+*.bin
+*.tlog
+*.tar.gz
+*.zip
+*.bag
+*.db3
+*.lock

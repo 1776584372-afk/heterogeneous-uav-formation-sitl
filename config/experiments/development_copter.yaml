@@ -1,0 +1,22 @@
+schema_version: 1
+name: development_copter_controller
+wind_m_s: 0
+altitude: 60.0
+endpoint: flythrough
+capability_evidence: config_only
+capability_source: "Development controller check; calibration not yet frozen"
+required_straight_margin: 1.0
+waypoints: [[0.0, 0.0], [400.0, 0.0], [400.0, 400.0]]
+planner:
+  nominal_radius: 160.0
+  radii: [160.0]
+  nominal_speed: 14.0
+  start_speed: 14.0
+  end_speed: 14.0
+  ds: 4.0
+  trans_len: 40.0
+  bounds: [-100.0, -100.0, 550.0, 550.0]
+  smooth_weight: 0.05
+  objective_method: quadratic
+members:
+  - {member_id: 0, platform: multirotor, r_y: 0.0, v_min: 0.0, v_max: 20.0, a_lat_max: 3.0, yaw_rate_max: 0.25, a_t_min: -0.4, a_t_max: 0.4}

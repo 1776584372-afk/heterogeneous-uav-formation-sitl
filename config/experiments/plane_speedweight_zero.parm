@@ -1,0 +1,4 @@
+# Development-only one-factor TECS comparison; not a new physical envelope.
+# AP_TECS.cpp: SPDWEIGHT=0 assigns pitch to height, throttle to airspeed.
+# Model coefficients, sensor noise and all acceptance bounds are unchanged.
+TECS_SPDWEIGHT 0

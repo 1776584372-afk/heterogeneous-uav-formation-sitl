@@ -1,0 +1,23 @@
+schema_version: 1
+document_id: measurement_definition_v3_revision_5
+status: PRECALIBRATION_FROZEN
+created_at: '2026-09-28'
+inherits:
+  document: config/v3/measurement_definition_v3_revision_4.yaml
+  rule: all metric, signal, command, filtering, host-isolation, and timing definitions remain unchanged
+scope: current_ArduPilot_SITL_models_and_v3_timing_environment_only
+amendment:
+  reason: >-
+    Revision-6 produced one valid complete fixed-wing repeat, then later jobs
+    failed before startup because the same serial2 TCP port remained in
+    TIME_WAIT. Each preregistered job now receives a distinct base port with a
+    stride of 10. Startup failures stop the batch immediately.
+  retained_valid_exploratory_repeat: runs/v3_timing_requalification_20260928/group_A_revision_8/fw_coupled_v14_r005_b5_v3r6A_rep00
+  invalid_batch_scope: runs/v3_timing_requalification_20260928/group_A_revision_8
+port_policy:
+  base_port: 39980
+  per_job_stride: 10
+  serial_ports: [base, base_plus_2, base_plus_3]
+prohibitions:
+  - Do not reinterpret startup infrastructure failures as capability failures.
+  - Do not relax either 0.11 s timing gate.

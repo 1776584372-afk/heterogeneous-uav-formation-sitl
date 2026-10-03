@@ -1,0 +1,84 @@
+schema_version: 1
+document_id: capability_v3
+status: FROZEN
+freeze_allowed: true
+created_at: '2026-09-28'
+scope: current_ArduPilot_SITL_models_and_v3_timing_environment_only
+reason_for_new_major_version: >-
+  v2 B tracking passed after source-clock alignment, but 4x SITL command timing
+  was not qualified. A retained 2x A attempt also failed the timing gate. The
+  current v3 candidate uses realtime 1x SITL and the same fail-closed timing gate.
+unchanged_candidate:
+  no_wind: true
+  altitude_m: 60.0
+  common_speed_interval_m_s: [14, 15]
+  equivalent_bank_max_deg: 5
+  multicopter_reference_tangential_acceleration_m_s2: [-0.3, 0.3]
+  fixedwing_reference_tangential_acceleration_m_s2: [-0.05, 0.05]
+multicopter:
+  model: x:freestyle.json
+  planning_limit: {turn_speed_m_s: [14, 15], tangential_acceleration_m_s2: [-0.3, 0.3], maximum_equivalent_bank_deg: 5}
+fixed_wing:
+  model: plane
+  planning_limit:
+    equivalent_airspeed_m_s: [14, 15]
+    tangential_acceleration_m_s2: [-0.05, 0.05]
+    maximum_equivalent_bank_deg: 5
+    minimum_reference_turn_radius_m: 228.45
+    guidance:
+      mode: curvature_ff
+      lookahead_m: 40.0
+      cross_track_gain: 1.0
+      course_to_bank_gain_rad_per_rad: 0.8726646259971648
+calibration_dataset_A:
+  path: runs/v3_timing_requalification_20260928/group_A_revision_9
+  result: 10/10 complete; fixedwing 5/5 and multicopter 5/5, both turn directions
+  batch_status_sha256: c0245aafdede790a36db0e41fb97dd913580b9a7a353fbdbe6c1b094a8d81948
+  dynamic_summary_sha256: 9a4bffdf8e3d4de1d3f5c141c6464602037fac48f35ba6aeba6e48a9135edfc6
+  maximum_command_gap_s:
+    fixedwing_wall: 0.1075297049828805
+    fixedwing_observed_source: 0.10100000000002751
+    multicopter_wall: 0.07499210099922493
+    multicopter_observed_source: 0.10000000000002274
+  tracking_worst_case:
+    fixedwing: {position_error_m: 2.4778493212826755, speed_error_m_s: 0.18722430760516673, course_error_deg: 0.4684990682279512, altitude_error_m: 0.17300000000000182, roll_abs_deg: 8.321613055477457}
+    multicopter: {position_error_m: 1.4223613946564584, speed_error_m_s: 0.1417086115873687, course_error_deg: 0.3904465244295957, altitude_error_m: 0.1700000000000017, roll_abs_deg: 6.900495722234277}
+  qualified_dynamic_worst_case:
+    fixedwing: {filtered_airspeed_acceleration_p99_abs_m_s2: 0.22471442617677725, filtered_airspeed_acceleration_rms_m_s2: 0.07727389089999254}
+    multicopter: {filtered_tangential_acceleration_p99_abs_m_s2: 0.6848772121216805, filtered_tangential_acceleration_rms_m_s2: 0.2587067363163815}
+validation_dataset_B:
+  status: PASSED
+  primary_batch: runs/v3_timing_requalification_20260928/group_B_revision_3
+  valid_fixedwing_repeats: [rep00, rep01, rep02, rep04, replacement_rep06]
+  valid_multicopter_repeats: [rep00, rep01, rep02, rep03, rep04]
+  retained_invalid_evidence:
+    - runs/v3_timing_requalification_20260928/group_B_revision_1
+    - runs/v3_timing_requalification_20260928/group_B_revision_2
+    - runs/v3_timing_requalification_20260928/group_B_revision_3/fw_coupled_v14_r005_b5_v3r7B_rep03
+    - runs/v3_timing_requalification_20260928/group_B_revision_3_replacements/fw_coupled_v14_r005_b5_v3r7B_rep05
+  valid_dynamic_summary_sha256: 2539bf112ec51066da9799f8ea16b5b0f7a3dc57edca997a161db81b389a91c7
+  tracking_worst_case:
+    fixedwing: {position_error_m: 2.4916242045422794, speed_error_m_s: 0.18916694218768626, course_error_deg: 0.3789235362374662, altitude_error_m: 0.1700000000000017, roll_abs_deg: 8.323745782045792}
+    multicopter: {position_error_m: 1.439358865031502, speed_error_m_s: 0.14906643076396264, course_error_deg: 0.37971661134989537, altitude_error_m: 0.1700000000000017, roll_abs_deg: 6.88360936017189}
+  qualified_dynamic_worst_case:
+    fixedwing: {filtered_airspeed_acceleration_p99_abs_m_s2: 0.25274197373458623, filtered_airspeed_acceleration_rms_m_s2: 0.08449169437453097}
+    multicopter: {filtered_tangential_acceleration_p99_abs_m_s2: 0.7110335628923541, filtered_tangential_acceleration_rms_m_s2: 0.2613607113049244}
+  maximum_command_gap_s:
+    fixedwing_wall: 0.1029829639592208
+    fixedwing_observed_source: 0.10100000000002751
+    multicopter_wall: 0.0819788130465895
+    multicopter_observed_source: 0.10000000000002274
+formal_experiments_unlocked: true
+frozen_contract:
+  measurement: config/v3/measurement_definition_v3_revision_5.yaml
+  acceptance: config/v3/acceptance_protocol_v3_revision_5.yaml
+  plan: config/v3/calibration_and_validation_plan_v3_revision_7.yaml
+  measurement_sha256: f72de026463855af55e592c57b43b18ddf0e43c9841fee5aa4529ab8a97b58e4
+  acceptance_sha256: ada32c826f3770b4ff6e44e023a5a085b10d5d53f88387fed4a8a323d425807c
+  plan_sha256: 9f502ce5271a10e636cee33e426ee933290b4aea696f8c9b93fdb2e06147e5e1
+  project_git_commit: 6a6da740e33be7408ce121167410c983c94344d3
+  ardupilot_git_commit: a82481310ba19fe013e4797ea05cf702e76836bb
+prohibitions:
+  - Do not interpret this SITL work domain as a real-aircraft physical envelope.
+  - Do not change this frozen A capability using v3 B results; any change creates v4.
+  - Do not modify this candidate using v3 B results.

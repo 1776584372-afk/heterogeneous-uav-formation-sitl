@@ -1,0 +1,22 @@
+schema_version: 1
+name: development_plane_controller
+wind_m_s: 0
+altitude: 60.0
+endpoint: flythrough
+capability_evidence: config_only
+capability_source: "Development controller check; calibration not yet frozen"
+required_straight_margin: 1.0
+waypoints: [[0.0, 0.0], [400.0, 0.0], [400.0, 400.0]]
+planner:
+  nominal_radius: 160.0
+  radii: [160.0]
+  nominal_speed: 14.0
+  start_speed: 14.0
+  end_speed: 14.0
+  ds: 4.0
+  trans_len: 40.0
+  bounds: [-100.0, -100.0, 550.0, 550.0]
+  smooth_weight: 0.05
+  objective_method: quadratic
+members:
+  - {member_id: 0, platform: fixedwing, r_y: 0.0, v_min: 12.0, v_max: 24.0, a_lat_max: 3.0, bank_max: 0.523598775598, a_t_min: -0.5, a_t_max: 0.5}

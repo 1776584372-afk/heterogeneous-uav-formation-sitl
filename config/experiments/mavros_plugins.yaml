@@ -1,0 +1,11 @@
+/**:
+  ros__parameters:
+    plugin_allowlist:
+      - sys_status
+      - command
+      - local_position
+      - home_position
+      - setpoint_position
+      - param
+      - imu
+      - vfr_hud

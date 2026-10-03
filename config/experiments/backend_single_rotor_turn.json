@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "name": "development_single_rotor_timing",
+  "wind_m_s": 0.0,
+  "altitude": 60.0,
+  "endpoint": "flythrough",
+  "capability_evidence": "prior_backend_calibration_pending_revalidation",
+  "capability_source": "/home/lzzy/Desktop/nvidia_port/runs/paper_hetero/frozen_v1/capabilities_verified.yaml",
+  "required_straight_margin": 1.0,
+  "waypoints": [[0.0,0.0],[600.0,0.0],[600.0,600.0],[1200.0,600.0]],
+  "planner": {
+    "nominal_radius": 160.0,
+    "radii": [160.0],
+    "nominal_speed": 14.0,
+    "start_speed": 14.0,
+    "end_speed": 14.0,
+    "ds": 4.0,
+    "trans_len": 160.0,
+    "bounds": [-100.0,-1800.0,1800.0,1800.0],
+    "smooth_weight": 0.05,
+    "objective_method": "quadratic",
+    "lambda_time": 0.0
+  },
+  "members": [{"platform":"multirotor","member_id":0,"r_y":0.0,
+    "v_min":0.0,"v_max":20.0,"a_lat_max":3.0,"yaw_rate_max":0.25,
+    "a_t_min":-0.4,"a_t_max":0.4}],
+  "acceptance": {"tracking_rmse_m":3.0,"tracking_max_m":8.0,"altitude_error_max_m":2.0,
+    "maximum_constraint_violation_time_fraction":0.0,"constraint_tolerance":0.001},
+  "reference_reserve": {"tangential_fraction":0.5}
+}

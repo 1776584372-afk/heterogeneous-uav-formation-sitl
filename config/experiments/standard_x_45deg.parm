@@ -1,0 +1,4 @@
+# Development candidate, not frozen capabilities or a certified flight envelope.
+# Default X model drag reference: 15.08 m/s at 45 deg (SIM_Frame.cpp).
+# Original 30 deg candidate failed to track 12 m/s; preserve that evidence.
+ATC_ANGLE_MAX 45

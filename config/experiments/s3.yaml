@@ -1,0 +1,18 @@
+schema_version: 1
+name: S3_heterogeneous
+wind_m_s: 0
+altitude: 60.0
+endpoint: flythrough
+waypoints: [[0.0, 0.0], [400.0, 0.0], [400.0, 400.0], [800.0, 400.0]]
+planner:
+  nominal_radius: 40.0
+  radii: [30.0, 40.0, 60.0, 80.0, 100.0, 120.0, 160.0, 240.0]
+  nominal_speed: 14.0
+  ds: 2.0
+  trans_len: 40.0
+  bounds: [-40.0, -50.0, 850.0, 450.0]
+capability_source: "Illustrative high-speed multirotor envelope; requires calibration before S3 flight"
+members:
+  - {member_id: 0, platform: multirotor, r_y: -10.0, v_min: 0.0, v_max: 16.0, a_lat_max: 4.0, yaw_rate_max: 0.8, a_t_min: -2.0, a_t_max: 2.0}
+  - {member_id: 1, platform: multirotor, r_y: 0.0, v_min: 0.0, v_max: 16.0, a_lat_max: 4.0, yaw_rate_max: 0.8, a_t_min: -2.0, a_t_max: 2.0}
+  - {member_id: 2, platform: fixedwing, r_y: 10.0, v_min: 12.0, v_max: 25.0, a_lat_max: 6.0, bank_max: 0.6108652382, bank_rate_max: 0.436332313, a_t_min: -2.0, a_t_max: 2.0}

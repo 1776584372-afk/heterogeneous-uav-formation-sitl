@@ -1,0 +1,25 @@
+schema_version: 1
+name: S3_wide_capture_precheck
+wind_m_s: 0.0
+altitude: 60.0
+endpoint: flythrough
+capability_evidence: measured
+capability_source: /home/lzzy/Desktop/nvidia_port/runs/paper_hetero/frozen_v1/capabilities_verified.yaml
+required_straight_margin: 1.0
+waypoints: [[0.0, 0.0], [800.0, 0.0], [800.0, 800.0]]
+planner:
+  nominal_radius: 320.0
+  radii: [320.0]
+  nominal_speed: 14.0
+  start_speed: 14.0
+  end_speed: 14.0
+  ds: 4.0
+  trans_len: 80.0
+  bounds: [-100.0, -100.0, 1800.0, 1000.0]
+  smooth_weight: 0.05
+  objective_method: quadratic
+  lambda_time: 0.0
+members:
+  - {member_id: 0, platform: multirotor, r_y: -10.0, v_min: 0.0, v_max: 20.0, a_lat_max: 3.0, yaw_rate_max: 0.25, a_t_min: -0.4, a_t_max: 0.4}
+  - {member_id: 1, platform: multirotor, r_y: 0.0, v_min: 0.0, v_max: 20.0, a_lat_max: 3.0, yaw_rate_max: 0.25, a_t_min: -0.4, a_t_max: 0.4}
+  - {member_id: 2, platform: fixedwing, r_y: 10.0, v_min: 12.0, v_max: 24.0, a_lat_max: 2.5, bank_max: 0.47123889803846897, a_t_min: -0.2, a_t_max: 0.2}

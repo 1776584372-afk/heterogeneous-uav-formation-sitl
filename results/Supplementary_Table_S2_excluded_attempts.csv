@@ -1,0 +1,4 @@
+﻿attempt,classification,reason
+formal_v16_20260929_004/s1_C_seed1,INVALID_EVIDENCE,simultaneous command wall-clock gaps; completed flight; no acceptance failures
+formal_v16_20260929_004/s3_swap_F_seed4,NO_AUDIT,member 0 stale telemetry during join; no track phase
+formal_v16_recovery_20260929_005/s1_C_seed1_recovery1,INVALID_EVIDENCE,single simultaneous 0.121-0.127 s host-wall command gap; completed flight; no acceptance failures

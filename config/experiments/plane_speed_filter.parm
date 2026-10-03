@@ -1,0 +1,5 @@
+# Development one-factor TECS estimator test, independent of SPDWEIGHT.
+# AP_TECS.cpp documents SPD_OMEGA range 0.5..2.0 rad/s; default is 2.0.
+# This changes onboard control estimation, not recorded evidence or scoring.
+# SIM_ARSPD_RND and all physical/acceptance limits remain unchanged.
+TECS_SPD_OMEGA 0.5

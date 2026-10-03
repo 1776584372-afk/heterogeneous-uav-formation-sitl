@@ -1,0 +1,88 @@
+schema_version: 1
+document_id: formal_experiment_protocol_v3
+status: PREREGISTERED
+created_at: '2026-09-28'
+scope: current_ArduPilot_SITL_models_and_frozen_v3_work_domain_only
+frozen_inputs:
+  capability: config/v3/capability_v3.yaml
+  measurement: config/v3/measurement_definition_v3_revision_5.yaml
+  acceptance: config/v3/acceptance_protocol_v3_revision_5.yaml
+  independent_validation: runs/v3_timing_requalification_20260928/group_B_final_manifest.json
+environment:
+  wind_m_s: 0.0
+  altitude_m: 60.0
+  sitl_speedup: 1.0
+  common_speed_interval_m_s: [14.0, 15.0]
+  slots_m: [-10.0, 0.0, 10.0]
+  turns: [left, right]
+  control_cpu: 3
+  sitl_cpu: 2
+  gcs_cpu: 1
+execution_controllers:
+  multicopter:
+    mode: measured_feedback_nmpc_consistent_correction
+    spatial_feedback: NMPC output drives a bounded C1 correction of the common member reference
+    heading: path tangent with its geometric heading-rate feedforward
+    correction_limits: {position_m: 1.0, speed_m_s: 0.2, acceleration_m_s2: 0.1, response_s_inv: 0.5}
+    prohibition: direct-reference bypass is not a formal NMPC result
+  fixedwing:
+    mode: curvature_ff_course_guidance_plus_TECS
+    progress_gain: 0.05
+    planning_limits_are_not_controller_authority: true
+scenarios:
+  S1: three multicopters
+  S2: three fixed wings
+  S3: two multicopters and one fixed wing
+  S3_swap: fixed wing exchanges the two outer slots with member 0
+reference_methods:
+  A0: nominal geometry and nominal speed; offline reference-only comparison
+  A1: per-member independent clipping; offline reference-only comparison
+  A2: pointwise team interval without whole-route dynamics; offline reference-only comparison
+  A3: whole-route progress planning on nominal radius only; fly only when independently feasible
+  F: bounded candidate-radius search plus whole-route dynamic progress planning
+  C: fixed R=320 m and constant feasible common progress; independently audited
+  protection: infeasible references are reported as PLANNING_REJECTED and are never flown
+task_geometry:
+  waypoints_m: [[0.0, 0.0], [1400.0, 0.0], [1400.0, 1400.0], [2800.0, 1400.0]]
+  nominal_radius_m: 240.0
+  radius_candidates_m: [240.0, 280.0, 320.0, 360.0, 400.0]
+  curvature_transition_length_m: 320.0
+  sample_spacing_m: 4.0
+qualification_window:
+  included: complete track phase from common-progress start through route completion
+  excluded_from_core: [takeoff, join, exit, landing]
+  dynamic_boundary_exclusion_s: 0.25
+time_alignment:
+  basis: each vehicle boot clock
+  reference_time: fleet track time plus recorded per-vehicle clock_drift
+  interpolation: frozen member_reference on its monotonic profile time
+tracking_thresholds:
+  maximum_position_error_m: 4.0
+  maximum_speed_error_m_s: 1.0
+  maximum_course_error_deg: 5.0
+  maximum_altitude_error_m: 2.0
+  maximum_fixedwing_roll_deg: 27.0
+dynamic_processing:
+  source_multicopter: DataFlash SIM2 horizontal ground speed
+  source_fixedwing: DataFlash SIM2 equivalent airspeed
+  resample_hz: 50.0
+  filter: {type: savitzky_golay, window_s: 0.50, polynomial_order: 3, derivative: analytic}
+dynamic_thresholds:
+  multicopter: {p99_abs_m_s2: 0.8, rms_m_s2: 0.35}
+  fixedwing: {p99_abs_m_s2: 0.8, rms_m_s2: 0.35}
+run_eligibility:
+  maximum_command_source_clock_gap_s: 0.11
+  maximum_command_wall_clock_gap_s: 0.11
+  require_complete_native_logs: true
+  require_zero_mpc_failures: true
+  invalid_timing_policy: retain as INVALID_EVIDENCE; do not count as pass or capability failure
+repetition:
+  technical_repeats_per_flight_group: 5
+  seeds: [0, 1, 2, 3, 4]
+  report_all_attempts: true
+anti_leakage:
+  rule: thresholds and processing above are frozen before system and formal S1/S2/S3 results
+  change_policy: any controller, model, timing environment, metric, or threshold change creates v4
+limitations:
+  - This is a SITL engineering work-domain protocol, not a real-aircraft physical envelope.
+  - Local UDP forwarding success does not prove reception by the Mac ground station.
