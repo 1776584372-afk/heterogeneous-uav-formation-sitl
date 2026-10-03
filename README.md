@@ -16,6 +16,9 @@ This repository contains the engineering and analysis materials for the frozen A
 - `results/`: compact supplementary tables for selected formal runs and excluded attempts.
 - `docs/`: engineering verification notes.
 
+For manuscript writing and evidence boundaries, start with
+[`docs/论文撰写移交说明_20261003.md`](docs/论文撰写移交说明_20261003.md).
+
 ## Reproduction boundary
 
 The formal results correspond to the recorded project commit

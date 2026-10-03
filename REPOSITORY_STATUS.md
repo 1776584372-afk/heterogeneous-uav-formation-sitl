@@ -1,11 +1,11 @@
 # Repository preparation status
 
-Prepared locally on 2026-10-03 for GitHub account `1776584372-afk`.
+Prepared and published on 2026-10-03 for GitHub account `1776584372-afk`.
 
 Target repository: `heterogeneous-uav-formation-sitl`.
 
-Visibility: private.
+Visibility: private. Default branch: `main`.
 
-The remote repository has not yet been created because the current environment has no authenticated GitHub CLI session and the in-app browser could not establish a connection to GitHub. No password, token, or SSH key was requested or stored.
+Published commit: `e84caa3f1e30ae25870cccc3a02a6dc17f63fe81`.
 
-Before publishing, review the compact results and configuration paths, then create the private repository and push this directory. Do not add the multi-gigabyte raw-data archives to Git history.
+The multi-gigabyte raw-data archives remain outside Git history and are delivered separately with SHA256 checksums. Do not add them to this repository.
